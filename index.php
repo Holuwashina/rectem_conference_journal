@@ -5,8 +5,6 @@ $searches;
 $search__error;
 $no_search__error;
 
-// print_r($_SERVER);
-
 $sql = "SELECT * FROM research_info ORDER BY research_id DESC";
 $res = $conn->query($sql);
 
@@ -36,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 // preview pdf
 if (!empty($_REQUEST["preview"]) && $_REQUEST["preview"] == 1) {
-    $pdf = $_REQUEST["pdf"];
+    $pdf = basename($_REQUEST["pdf"]);
     header("Catch-Control: public");
     header("Content-Type-Encoding: binary");
     header("content-Type: application/pdf");
