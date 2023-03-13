@@ -148,13 +148,12 @@ if (isset($_REQUEST["delete"]) && $_REQUEST["delete"] == 1) {
         $conn->close();
     }
 }
-
 ?>
 
 <?php include "./includes/header.php"
 ?>
 <div class="container text-center mb-5">
-    <h5 class="text-uppercase">Manage research</h5>
+    <h5 class="text-uppercase" style="font-weight: 600;">Manage research</h5>
 </div>
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST" enctype="multipart/form-data" class="container col-sm-10 col-md-5 col-lg-4">
     <div class="mb-3">

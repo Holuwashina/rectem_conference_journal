@@ -39,7 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <?php include "./includes/header.php" ?>
-
+<div class="container text-center mb-5">
+    <h5 class="text-uppercase" style="font-weight: 600;">Admin Login</h5>
+</div>
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST" class="container col-sm-10 col-md-5 col-lg-4" id="login-form">
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
@@ -50,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input class="form-control" type="password" name="password" id="password">
     </div>
     <button type="submit" class="btn btn-primary w-100">LOGIN</button>
-    <p class="fst-italic fw-light text-danger text-center mt-3" style="font-size: 0.8rem;">Only RECTEM admin can upload research pappers</p>
+    <p class="fst-italic fw-light text-danger text-center mt-3" style="font-size: 0.8rem;">Only admin can upload research pappers</p>
     <div class="alert-container">
         <?php
         foreach ($error as $err) {

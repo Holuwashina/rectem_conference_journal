@@ -33,26 +33,27 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 }
 
 // preview pdf
-if (!empty($_REQUEST["preview"]) && $_REQUEST["preview"] == 1) {
-    $pdf = basename($_REQUEST["pdf"]);
-    header("Catch-Control: public");
-    header("Content-Type-Encoding: binary");
-    header("content-Type: application/pdf");
-    if (file_exists("uploads/" . $pdf)) {
-        if (!is_readable("uploads/" . $pdf)) {
-            header("Content-Disposition: attachment; filename=$pdf");
-            readfile("uploads/" . $pdf);
-        } else {
-            readfile("uploads/" . $pdf);
-        }
-    }
-}
+// if (!empty($_REQUEST["preview"]) && $_REQUEST["preview"] == 1) {
+//     $pdf = basename($_REQUEST["pdf"]);
+//     header("Catch-Control: public");
+//     header("Content-Type-Encoding: binary");
+//     header("content-Type: application/pdf");
+//     if (is_readable("uploads/" . $pdf)) {
+//         $is_display = readfile("uploads/" . $pdf);
+//         if (!$is_display) {
+//             header(
+//                 "Content-Disposition: attachment; filename=" . str_contains($pdf, "index") ? "preview-copy" : $pdf
+//             );
+//         }
+//     }
+// }
+
 ?>
 
 <?php include "includes/header.php" ?>
 <div class="container text-center mb-5">
-    <h5 class="text-uppercase">Reedemers college of science and management</h5>
-    <h5 class="text-uppercase">Conference journals</h5>
+    <h5 class="text-uppercase" style="font-weight: 600;">Reedemers college of science and management</h5>
+    <h5 class="text-uppercase" style="font-weight: 600;">Conference journals</h5>
 </div>
 <form method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" class="container pb-2">
     <div class="hstack">
@@ -100,7 +101,7 @@ if (!empty($_REQUEST["preview"]) && $_REQUEST["preview"] == 1) {
                                 <p class="m-0 text-capitalize" style="font-size: 0.8rem; padding-left: 5px"><?php strlen($research[2]) < 30 ? print $research[2] : print ucfirst(substr($research[2], -30)) . "..."; ?></p>
                             </div>
                             <p style="text-align: right; font-size: 0.7rem;"><span class="fst-italic text-danger text-capitalize">Uploaded on: </span> <?php echo $research[4]; ?></p>
-                            <a href="index.php?preview=1&pdf=<?php echo $research[3]; ?>" class="btn btn-sm btn-primary w-100">Preview</a>
+                            <a href="pdf-preview.php?pdf=<?php echo $research[3]; ?>" class="btn btn-sm btn-primary w-100">Preview</a>
                         </div>
                     </div>
                 </div>
@@ -126,7 +127,7 @@ if (!empty($_REQUEST["preview"]) && $_REQUEST["preview"] == 1) {
                                     <p class="m-0 text-capitalize" style="font-size: 0.8rem; padding-left: 5px"><?php strlen($research[2]) < 30 ? print $research[2] : print ucfirst(substr($research[2], -30)) . "..."; ?></p>
                                 </div>
                                 <p style="text-align: right; font-size: 0.7rem;"><span class="fst-italic text-danger text-capitalize">Uploaded on: </span> <?php echo $research[4]; ?></p>
-                                <a href="index.php?preview=1&pdf=<?php echo $research[3]; ?>" class="btn btn-sm btn-primary w-100">Preview</a>
+                                <a href="pdf-preview.php?pdf=<?php echo $research[3]; ?>" class="btn btn-sm btn-primary w-100">Preview</a>
                             </div>
                         </div>
                     </div>
